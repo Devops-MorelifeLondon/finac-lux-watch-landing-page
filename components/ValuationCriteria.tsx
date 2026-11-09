@@ -26,8 +26,8 @@ export default function ValuationCriteria() {
       step: "03",
       title: "Box, Papers & Full Collector Set",
       description:
-        "A 'Full Set' includes original inner/outer presentation boxes, warranty guarantee card, manual booklets, swing tags, and bezel protectors. While we happily buy watches without papers ('naked watches'), full sets command top collector value.",
-      keyCheck: "Dated guarantee card, serial match, original presentation box",
+        "A 'Full Set' includes original inner/outer presentation boxes, manufacturer warranty card, manual booklets, swing tags, and bezel protectors. While we happily appraise watches without papers ('naked watches'), full sets command top collector value.",
+      keyCheck: "Dated warranty card, serial match, original presentation box",
     },
     {
       icon: History,

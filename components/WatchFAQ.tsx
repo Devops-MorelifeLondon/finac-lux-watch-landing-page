@@ -17,7 +17,7 @@ export default function WatchFAQ() {
     },
     {
       q: "Can I sell my Rolex, Omega or Patek without original box or papers?",
-      a: "Yes. You may submit an enquiry without the original box or guarantee papers ('naked watch'). Our horologists verify serial codes against manufacturer registers and inspect the movement. While complete sets command a collector premium, authentic watches without paperwork are actively purchased and appraised.",
+      a: "Yes. You may submit an enquiry without the original box or warranty papers ('naked watch'). Our horologists verify serial codes against manufacturer registers and inspect the movement. While complete sets command a collector premium, authentic watches without paperwork are actively purchased and appraised.",
     },
     {
       q: "Should I get my watch serviced or polished before selling it?",

@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   CheckCircle2,
-  Upload,
   X,
   Clock,
   ShieldCheck,
@@ -66,8 +65,6 @@ export default function ValuationForm({ selectedBrandFromParent }: ValuationForm
   const [boxAndPapers, setBoxAndPapers] = useState("Full Set (Box & Papers)");
   const [year, setYear] = useState("");
   const [caseMaterial, setCaseMaterial] = useState("Stainless Steel");
-  const [photo, setPhoto] = useState<File | null>(null);
-  const [photoPreview, setPhotoPreview] = useState<string | null>(null);
 
   // Contact info
   const [fullName, setFullName] = useState("");
@@ -83,38 +80,11 @@ export default function ValuationForm({ selectedBrandFromParent }: ValuationForm
   const [refId, setRefId] = useState("");
   const [apiError, setApiError] = useState<string | null>(null);
 
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
   useEffect(() => {
     if (selectedBrandFromParent) {
       setBrand(selectedBrandFromParent);
     }
   }, [selectedBrandFromParent]);
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      if (file.size > 15 * 1024 * 1024) {
-        setErrors((prev) => ({ ...prev, photo: "File size exceeds 15MB limit." }));
-        return;
-      }
-      setPhoto(file);
-      const url = URL.createObjectURL(file);
-      setPhotoPreview(url);
-      setErrors((prev) => {
-        const next = { ...prev };
-        delete next.photo;
-        return next;
-      });
-    }
-  };
-
-  const removePhoto = () => {
-    setPhoto(null);
-    if (photoPreview) URL.revokeObjectURL(photoPreview);
-    setPhotoPreview(null);
-    if (fileInputRef.current) fileInputRef.current.value = "";
-  };
 
   const validate = () => {
     const errs: Record<string, string> = {};
@@ -165,7 +135,6 @@ export default function ValuationForm({ selectedBrandFromParent }: ValuationForm
         phone,
         postCode,
         additionalInformation: additionalInfo,
-        photosCount: photo ? 1 : 0,
       };
 
       const res = await fetch("/api/submit", {
@@ -197,7 +166,6 @@ export default function ValuationForm({ selectedBrandFromParent }: ValuationForm
     setModel("");
     setYear("");
     setAdditionalInfo("");
-    removePhoto();
     setErrors({});
   };
 
@@ -215,7 +183,7 @@ export default function ValuationForm({ selectedBrandFromParent }: ValuationForm
           </h2>
           <p className="text-[16px] text-[#605d52] font-[350]">
             Complete the form below to receive your individual appraisal. Fields marked with{" "}
-            <span className="text-[#00da04] font-bold">*</span> are mandatory. Optional photograph upload (max 1 file).
+            <span className="text-[#00da04] font-bold">*</span> are mandatory.
           </p>
         </div>
 
@@ -492,58 +460,6 @@ export default function ValuationForm({ selectedBrandFromParent }: ValuationForm
                 </div>
                 {errors.boxAndPapers && (
                   <p className="mt-1.5 text-[12px] text-red-600">{errors.boxAndPapers}</p>
-                )}
-              </div>
-
-              {/* Photo Upload (Optional) */}
-              <div>
-                <label className="block text-[13px] font-[500] text-[#201515] mb-1">
-                  Upload Photo (Optional — Maximum 1 photograph)
-                </label>
-                <p className="text-[12px] text-[#605d52] mb-2 font-[350]">
-                  Single image of the dial, full set, or caseback up to 15MB (JPG, PNG, WEBP).
-                </p>
-
-                {photoPreview ? (
-                  <div className="relative inline-block border border-[#c5c0b1] rounded-[8px] p-2 bg-[#f8f4f0]">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={photoPreview}
-                      alt="Uploaded watch preview"
-                      className="h-28 w-auto object-cover rounded-[6px]"
-                    />
-                    <button
-                      type="button"
-                      onClick={removePhoto}
-                      className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-[#201515] text-white flex items-center justify-center hover:bg-black transition-colors"
-                      aria-label="Remove image"
-                    >
-                      <X className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
-                ) : (
-                  <div
-                    onClick={() => fileInputRef.current?.click()}
-                    className="border-2 border-dashed border-[#c5c0b1] hover:border-[#201515] rounded-[10px] p-6 text-center cursor-pointer bg-[#f8f4f0]/40 hover:bg-[#f8f4f0] transition-colors"
-                  >
-                    <input
-                      ref={fileInputRef}
-                      type="file"
-                      accept="image/png, image/jpeg, image/webp"
-                      onChange={handleFileChange}
-                      className="hidden"
-                    />
-                    <Upload className="w-7 h-7 mx-auto mb-2 text-[#605d52]" />
-                    <span className="text-[13px] font-[500] text-[#201515] block">
-                      Click to browse 1 photo or drag and drop
-                    </span>
-                    <span className="text-[11px] text-[#939084]">
-                      Optional • Single image up to 15MB
-                    </span>
-                  </div>
-                )}
-                {errors.photo && (
-                  <p className="mt-1.5 text-[12px] text-red-600">{errors.photo}</p>
                 )}
               </div>
             </div>

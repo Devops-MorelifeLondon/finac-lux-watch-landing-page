@@ -10,6 +10,7 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import ValuationForm from "@/components/ValuationForm";
 import WatchFAQ from "@/components/WatchFAQ";
 import CTASection from "@/components/CTASection";
+import FloatingCTA from "@/components/FloatingCTA";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -36,6 +37,7 @@ export default function Home() {
         <WatchFAQ />
         <CTASection />
       </main>
+      <FloatingCTA />
       <Footer />
     </div>
   );

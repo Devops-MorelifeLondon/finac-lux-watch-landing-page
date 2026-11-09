@@ -11,13 +11,13 @@ export default function HowItWorks() {
       description:
         "Select your watch brand and share the model, reference number, condition, and whether original box and papers are present.",
       badge: "Takes under 2 minutes online",
-      details: ["Model & Reference", "Condition & Year", "Box & Guarantee Status"],
+      details: ["Model & Reference", "Condition & Year", "Box & Warranty Status"],
     },
     {
       num: "02",
       title: "Horological Appraisal Review",
       description:
-        "Submit your information and any optional photographs. Our watch desk reviews your timepiece against verified UK secondary market sales.",
+        "Submit your timepiece information. Our watch desk reviews your specifications against verified UK secondary market sales.",
       badge: "Fast, confidential assessment",
       details: ["Secondary Market Data", "Authenticity Cross-Check", "24–48hr Response"],
     },

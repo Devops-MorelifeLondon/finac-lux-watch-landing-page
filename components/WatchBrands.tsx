@@ -12,7 +12,7 @@ export default function WatchBrands({ onSelectBrand }: WatchBrandsProps) {
     {
       name: "Rolex",
       tagline: "Geneva, Switzerland • The Benchmark of Prestige",
-      badge: "Highest UK Liquidity",
+      badge: "High UK Demand",
       description:
         "Whether you own a modern ceramic Submariner, an iconic Daytona chronograph, a GMT-Master II, or an heirloom Day-Date, our horologists evaluate market demand across all references.",
       popularModels: [
@@ -24,7 +24,7 @@ export default function WatchBrands({ onSelectBrand }: WatchBrandsProps) {
       ],
       keyFactors: [
         "Ceramic & aluminum bezel integrity",
-        "Original guarantee card & green seal tags",
+        "Original warranty card & green seal tags",
         "Oyster / Jubilee bracelet stretch assessment",
       ],
     },
@@ -100,7 +100,7 @@ export default function WatchBrands({ onSelectBrand }: WatchBrandsProps) {
       ],
       keyFactors: [
         "Cabochon blue spinel / sapphire crown condition",
-        "Original red presentation box & guarantee documents",
+        "Original red presentation box & paperwork",
         "SmartLink bracelet links or deployant leather strap",
       ],
     },
